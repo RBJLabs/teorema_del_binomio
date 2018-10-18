@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hola mundo</title>
+    <!--  J   S   -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <script type="text/javascript">
+
+    function factorial(Exp){
+	     var resultado = 1;
+	      for(var i = 1; i <= Exp; i++)
+	       {resultado*=i;}
+	        return resultado;
+    }
+
+    function combinacion(Exp, k){
+	     return (factorial(Exp))/(factorial(k)*factorial(Exp-k));
+     }
+
+      function firstTerm()
+      {
+        var Uno = Number(document.getElementById('1T').value);
+        var Exp = Number(document.getElementById('Exp').value);
+
+        var firstTerm;
+        if(Uno==1){
+          if(Exp==0){
+            firstTerm=1;
+          }else if(Exp<0)
+          {
+            firstTerm="Ingresa cero o un valor positivo en el exponente";
+          }else{
+            if(Exp == 1)
+            {
+              firstTerm = "x";
+            }else {
+              firstTerm = "x" + '<sup>' + Exp + '</sup>';
+            }
+          }
+        }else if(Uno!=0){
+          if(Exp==0){
+            firstTerm=1;
+          }else if(Exp<0)
+          {
+            firstTerm="Ingresa cero o un valor positivo en el exponente";
+          }else{
+            if(Exp == 1)
+            {
+              firstTerm = Math.pow(Uno,Exp) + "x";
+            }else {
+              firstTerm = Math.pow(Uno,Exp) + "x" + '<sup>' + Exp + '</sup>';
+            }
+          }
+        }else if (Uno==0) {
+          firstTerm="";
+        }
+
+        document.getElementById('firstTerm').innerHTML=firstTerm;
+      }
+
+      function secondTerm()
+      {
+        var Uno = Number(document.getElementById('1T').value);
+        var Dos = Number(document.getElementById('2T').value);
+        var Exp = Number(document.getElementById('Exp').value);
+
+        var ultimoCoeficiente = Math.pow(Dos,Exp);
+        var secondTerm;
+        if(Uno==0){
+          if(Dos==1){
+            if(Exp<=0)
+            {
+              secondTerm="";
+            }else{
+            if(Dos>0)
+            {
+              if(Exp==1){
+                secondTerm = "y";
+              }else{
+              secondTerm = "y" + '<sup>' + Exp + '</sup>';
+            }
+            }else{
+              if(Exp==1)
+              {
+                if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+                {
+                  secondTerm = "y";
+                }else {
+                  secondTerm = Math.pow(Dos,Exp) + "y";
+                }
+              }else{
+                if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+                {
+                  secondTerm = "y" + '<sup>' + Exp + '</sup>';
+                }else {
+                  secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+              }
+            }
+          }
+        }else if(Dos!=0){
+            if(Exp<=0)
+            {
+              secondTerm="";
+            }else{
+            if(Dos>0)
+            {
+              if(Exp==1){
+                secondTerm =  Math.pow(Dos,Exp) + "y";
+              }else{
+                secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+              }
+
+            }else{
+              if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+              {
+                if(Exp==1){
+                  secondTerm = Math.pow(Dos,Exp) + "y";
+                }else{
+                  secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+              }else {
+                if(Exp==1){
+                  secondTerm = Math.pow(Dos,Exp) + "y";
+                }else{
+                  secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+                }
+              }
+            }
+          }else if(Dos==0){
+            secondTerm="";
+          }
+        }else if(Uno!=0){ //AQUÍ TERMINA SI UNO ES IGUAL A CERO
+          if(Dos==1){
+            if(Exp<=0)
+            {
+              secondTerm="";
+            }else{
+            if(Dos>0)
+            {
+              if(Exp==1){
+                secondTerm = "+" + "y";
+              }else{
+              secondTerm = "+" + "y" + '<sup>' + Exp + '</sup>';
+            }
+            }else{
+              if(Exp==1)
+              {
+                if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+                {
+                  secondTerm = "+" + "y";
+                }else {
+                  secondTerm = Math.pow(Dos,Exp) + "y";
+                }
+              }else{
+                if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+                {
+                  secondTerm = "+" + "y" + '<sup>' + Exp + '</sup>';
+                }else {
+                  secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+              }
+            }
+          }
+        }else if(Dos!=0){
+            if(Exp<=0)
+            {
+              secondTerm="";
+            }else{
+            if(Dos>0)
+            {
+              if(Exp==1){
+                secondTerm = "+" + Math.pow(Dos,Exp) + "y";
+              }else{
+                secondTerm = "+" + Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+              }
+
+            }else{
+              if((Exp % 2 == 0) && ((ultimoCoeficiente<0) || (ultimoCoeficiente>0)))
+              {
+                if(Exp==1){
+                  secondTerm = "+" + Math.pow(Dos,Exp) + "y";
+                }else{
+                  secondTerm = "+" + Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+              }else {
+                if(Exp==1){
+                  secondTerm = Math.pow(Dos,Exp) + "y";
+                }else{
+                  secondTerm = Math.pow(Dos,Exp) + "y" + '<sup>' + Exp + '</sup>';
+                }
+                }
+              }
+            }
+          }else if(Dos==0){
+            secondTerm="";
+          }
+        }
+        document.getElementById('lastTerm').innerHTML=secondTerm;
+      }
+
+      function middleTerms()
+      {
+        var Uno = Number(document.getElementById('1T').value);
+        var Dos = Number(document.getElementById('2T').value);
+        var Exp = Number(document.getElementById('Exp').value);
+        var todo="";
+        var m = 0, n, coef2, coefPrincipal;
+        var middleTerms = [];
+        var middleTermsX = [];
+        var middleTermsY = [];
+        for(n = Exp-1; n >= 1; n--)
+        {
+          coefPrincipal = combinacion(Exp,n)*(Math.pow(Uno,n))*(Math.pow(Dos,m+1));
+          if(coefPrincipal>0){
+            if(n==1){
+              middleTermsX[m] = "+" + coefPrincipal + "x";
+              middleTerms[m] = "";
+            }else{
+              middleTermsX[m] = "+" + coefPrincipal + "x" + '<sup>' + n + '</sup>';
+              middleTerms[m] = "";
+            }
+
+            if((m+1)==1){
+              middleTermsY[m] = "y";
+              middleTerms[m] = "";
+            }else{
+              middleTermsY[m] = "y" + '<sup>' + (m+1) + '</sup>';
+              middleTerms[m] = "";
+            }
+
+          }else
+          if(coefPrincipal < 0){
+            if(n==1){
+              middleTermsX[m] = coefPrincipal + "x";
+              middleTerms[m] = "";
+            }else{
+              middleTermsX[m] = coefPrincipal + "x" + '<sup>' + n + '</sup>';
+              middleTerms[m] = "";
+            }
+
+            if((m+1)==1){
+              middleTermsY[m] = "y";
+              middleTerms[m] = "";
+            }else{
+              middleTermsY[m] = "y" + '<sup>' + (m+1) + '</sup>';
+              middleTerms[m] = "";
+            }
+          }
+          todo = todo + middleTerms[m] + middleTermsX[m] + middleTermsY[m];
+          if(coefPrincipal == 0){
+            todo = "";
+          }
+
+          m++;
+        }
+        document.getElementById('middleTerms').innerHTML=todo;
+      }
+      function resultadoFinal(){
+      var resultadoFinal = firstTerm() + middleTerms() + secondTerm();
+      }
+
+    </script>
+    <!--  C  S  S  -->
+    <style media="screen">
+      .primerT, .segundoT, .Exp{
+        width: 50px !important;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+      input[type=number]::-webkit-outer-spin-button,
+      input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type='number'] {
+        -moz-appearance:textfield;
+      }
+
+    </style>
+    <!--  H  T  M   L   -->
+  </head>
+  <body>
+    Monomio 1: <input class="primerT" value="0" type="number" id="1T" ><br><br><!--onkeyup="firstTerm(),middleTerms()"-->
+    Monomio 2: <input class="segundoT" value="0" type="number" id="2T" ><br><br><!--onkeyup="secondTerm(),middleTerms()"-->
+    Exponente: <input class="Exp" value="0" type="number" id="Exp" ><br><br><!--onkeyup="firstTerm(),secondTerm(),middleTerms()"-->
+    <input type="button" id="botonCalcular" value="Calcular" onclick="resultadoFinal()">
+    <span>Respuesta:  </span><span id="firstTerm"></span><span id="middleTerms"></span><span id="lastTerm"></span><br>
+    <span id="resultadoFinal"></span>
+
+  </body>
+</html>
